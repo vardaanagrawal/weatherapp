@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
+.App{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgb(94, 125, 221),rgb(166, 160, 250),azure);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.weather{
+    height: 90vh;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.search form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#text_field{
+    height: 30px;
+    width: 200px;
+    border-radius: 40px;
+    padding-left: 20px;
+    box-shadow: rgba(0, 0, 0, 0.582) 1px 1px 10px 1px;
 }
 
-.App-link {
-  color: #61dafb;
+#submit_btn{
+    height: 30px;
+    width: 100px;
+    border-radius: 40px;
+    background-color: rgb(66, 206, 159);
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    box-shadow: rgba(0, 0, 0, 0.582) 1px 1px 10px 1px;
+    border: none;
+    margin: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.output{
+    height: 80vh;
+    width: 400px;
+    backdrop-filter: blur(14px) saturate(120%);
+    border-radius: 30px;
+    overflow: hidden;
+    display: grid;
+    text-align: center;
+    border:solid black 1px;
+    box-shadow: rgba(0, 0, 0, 0.582) 1px 1px 20px 1px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-areas: "img desc"
+               "temp date"
+               "sunset pressure"
+               "aqi speed"   
+}
+
+.img{
+    grid-area: img;
+}
+
+img{
+    height: 100%;
+}
+
+.temp{
+    grid-area: temp;
+    font-size: 50px;
+    display: grid;
+    align-content: center;
+}
+
+.desc{
+    grid-area: desc;
+    display: grid;
+    align-content: center;
+    font-weight: bold;
+    font-size: 34px;
+}
+
+.date{
+    grid-area: date;
+    font-size: 24px;
+    display: grid;
+    align-content: center;
+}
+
+.sunset{
+    grid-area:sunset;
+    padding-top: 20px;
+    background-color: rgba(47, 79, 79, 0.603);
+    color: white;
+}
+
+.aqi{
+    grid-area: aqi;
+    padding-top: 20px;
+    background-color: rgba(47, 79, 79, 0.603);
+    color: white;
+}
+
+.pressure{
+    grid-area: pressure;
+    padding-top: 20px;
+    background-color: rgba(47, 79, 79, 0.603);
+    color: white;
+}
+
+.speed{
+    grid-area: speed;
+    padding-top: 20px;
+    background-color: ghostwhite;
+    background-color: rgba(47, 79, 79, 0.603);
+    color: white;
+    border-radius: 0px 0px 30px 0px;
+}
+
+svg{
+    position: relative;
+    top: 10px;
+}
+
+
+@media only screen and (max-width: 400px){
+    .output{
+        width: 99%;
+    }
+    .temp{
+        font-size: 32px;
+    }
+    .desc{
+        font-size: 22px;
+    }
 }
