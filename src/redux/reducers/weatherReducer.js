@@ -4,7 +4,6 @@ const weatherInfo = (state = { weatherinfo:{}},action) => {
             ...state,
             weatherinfo: action.payload
         }
-        console.log(state);
     }
     return state;
     

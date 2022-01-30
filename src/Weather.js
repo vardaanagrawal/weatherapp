@@ -1,44 +1,44 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import {useSelector,useDispatch} from 'react-redux';
-import {fetchWeather} from "./redux/actions/fetchWeather";
-
+import { useSelector, useDispatch } from "react-redux";
+import { fetchWeather } from "./redux/actions/fetchWeather";
 
 export default function Weather() {
   const [city, setCity] = useState("");
-  const [data,setData] = useState('');
-  const [show,setShow] = useState(false);
-  
-  const weatherSelector = useSelector(state=>state.weatherinfo);
+  const [show, setShow] = useState(false);
+
+  const weatherSelector = useSelector((state) => state.weatherinfo);
   const dispatch = useDispatch();
-  function getWeatherInfoAction(city){ dispatch(fetchWeather(city))};
+  function getWeatherInfoAction(city) {
+    dispatch(fetchWeather(city));
+  }
 
   useEffect(() => {
-    getWeatherInfoAction('delhi');
-    return
+    getWeatherInfoAction("delhi");
+    return;
   }, []);
-  
 
-  const find = async(e)=>{
+  const find = async (e) => {
     e.preventDefault();
-    if(city===""){
+    if (city === "") {
       console.log("please enter city");
-    }
-    else{
+    } else {
       setShow(true);
       getWeatherInfoAction(city);
-      console.log(weatherSelector);
     }
-  } 
-  
-
+  };
 
   return (
     <div className="weather">
       <div className="search">
         <form onSubmit={find}>
-          <input type="text" id="text_field" placeholder="city name" onChange={e=>setCity(e.target.value)}></input>
-          <input type="submit" id="submit_btn" value="Search" ></input>
+          <input
+            type="text"
+            id="text_field"
+            placeholder="city name"
+            onChange={(e) => setCity(e.target.value)}
+          ></input>
+          <input type="submit" id="submit_btn" value="Search"></input>
         </form>
       </div>
 
@@ -62,7 +62,8 @@ export default function Weather() {
           <div className="date">{weatherSelector.ob_time}</div>
           <div className="sunset">
             <b>SUNSET</b>
-          <br /><svg
+            <br />
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="34"
               height="34"
@@ -71,11 +72,13 @@ export default function Weather() {
               viewBox="0 0 16 16"
             >
               <path d="M7.646 4.854a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V1.5a.5.5 0 0 0-1 0v1.793l-.646-.647a.5.5 0 1 0-.708.708l1.5 1.5zm-5.303-.51a.5.5 0 0 1 .707 0l1.414 1.413a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .706l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
-            </svg>&emsp;
+            </svg>
+            &emsp;
             {weatherSelector.sunset}
           </div>
           <div className="aqi">
-            <b>AQI</b><br/>
+            <b>AQI</b>
+            <br />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="34"
@@ -90,7 +93,8 @@ export default function Weather() {
             {weatherSelector.aqi}
           </div>
           <div className="pressure">
-          <b>PRESSURE</b><br/>
+            <b>PRESSURE</b>
+            <br />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="34"
@@ -105,7 +109,8 @@ export default function Weather() {
             {weatherSelector.pres}
           </div>
           <div className="speed">
-          <b>SPEED</b><br/>
+            <b>SPEED</b>
+            <br />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="34"
@@ -121,13 +126,7 @@ export default function Weather() {
           </div>
         </div>
       )}
-      {!show && (
-        <div
-          className="output"
-          
-        >
-        </div>
-      )}
+      {!show && <div className="output"></div>}
     </div>
   );
 }
