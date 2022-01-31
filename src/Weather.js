@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchWeather } from "./redux/actions/fetchWeather";
@@ -30,6 +29,7 @@ export default function Weather() {
 
   return (
     <div className="weather">
+      <div style={{fontSize: '50px',color: 'white',fontWeight: '900',textShadow: 'black 2px 2px 20px 2px'}}>WEATHER APP</div>
       <div className="search">
         <form onSubmit={find}>
           <input
